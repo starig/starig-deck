@@ -3,7 +3,7 @@ import {ICart} from "../../redux/slices/desk/types";
 import {Badge, Button, Card, Col, Container, InputGroup, Modal, Row} from "react-bootstrap";
 import Comment from "./Comment";
 import {useDispatch, useSelector} from "react-redux";
-import {addComment, editCart} from "../../redux/slices/desk/slice";
+import {addComment, deleteCart, editCart} from "../../redux/slices/desk/slice";
 import Form from "react-bootstrap/Form";
 import {selectUser} from "../../redux/slices/user/selectors";
 import {selectTypes} from "../../redux/slices/types/selectors";
@@ -39,6 +39,19 @@ const Cart: FC<ICart> = ({
         dispatch(addComment({comment: message, author: currentUser.name, cartId: id}));
         setCommentMessage('');
     }
+
+    const removeCart = () => {
+        dispatch(deleteCart({
+            title,
+            author,
+            description: localDescription,
+            id,
+            type,
+            comments
+        }));
+        setShow(false);
+    }
+
     return (
         <>
             <Modal show={show} onHide={() => setShow(false)} size="lg"
@@ -110,11 +123,14 @@ const Cart: FC<ICart> = ({
                             comments.map((item, id) => <Comment key={id}
                                                                 comment={item.comment}
                                                                 cartId={item.cartId}
-                                                                author={item.author}/>)
+                                                                author={item.author} />)
                         }
                     </Container>
                 </Modal.Body>
                 <Modal.Footer>
+                    <Button variant="danger" onClick={removeCart}>
+                        Delete cart
+                    </Button>
                     <Button variant="secondary" onClick={() => setShow(false)}>
                         Close
                     </Button>

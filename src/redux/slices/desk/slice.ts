@@ -36,16 +36,38 @@ export const deskSlice = createSlice({
         editCart: (state, action: PayloadAction<ICart>) => {
             state.carts[action.payload.id] = action.payload;
         },
+        deleteCart: (state, action: PayloadAction<ICart>) => {
+            const carts = [...state.carts];
+            const cartIndex = action.payload.id;
+            carts.splice(cartIndex, 1);
+            state.carts = carts;
+            localStorage.setItem('carts', JSON.stringify(state.carts));
+        },
         addComment: (state, action: PayloadAction<IComment>) => {
             state.carts[action.payload.cartId].comments = [...state.carts[action.payload.cartId].comments, action.payload];
             localStorage.setItem('carts', JSON.stringify(state.carts));
         },
-        editComment: (state, action: PayloadAction<string>) => {
-
+        editComment: (state, action: PayloadAction<IComment>) => {
+            const comments = state.carts[action.payload.cartId].comments;
+            function findIndexOfComment (comment) {
+                return comment.comment === action.payload.comment
+            }
+            const commentIndex = comments.findIndex(findIndexOfComment);
+            comments[commentIndex].comment = action.payload.newValue;
+            localStorage.setItem('carts', JSON.stringify(state.carts));
+        },
+        deleteComment: (state, action: PayloadAction<IComment>) => {
+            const comments = state.carts[action.payload.cartId].comments;
+            function findIndexOfComment (comment) {
+                return comment.comment === action.payload.comment
+            }
+            const commentIndex = comments.findIndex(findIndexOfComment);
+            comments.splice(commentIndex, 1);
+            localStorage.setItem('carts', JSON.stringify(state.carts));
         }
     }
 });
 
-export const { addCart, editCart, addComment } = deskSlice.actions;
+export const { addCart, editCart, addComment, editComment, deleteCart, deleteComment } = deskSlice.actions;
 
 export default deskSlice.reducer;

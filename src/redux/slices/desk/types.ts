@@ -2,6 +2,7 @@ export interface IComment {
     comment: string,
     author: string;
     cartId: number;
+    newValue?: string;
 }
 
 export interface ICart {
