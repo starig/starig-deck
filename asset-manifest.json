@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/starig-deck/static/css/main.fa95dbb9.css",
-    "main.js": "/starig-deck/static/js/main.cb173c40.js",
+    "main.js": "/starig-deck/static/js/main.447741d3.js",
     "index.html": "/starig-deck/index.html",
     "main.fa95dbb9.css.map": "/starig-deck/static/css/main.fa95dbb9.css.map",
-    "main.cb173c40.js.map": "/starig-deck/static/js/main.cb173c40.js.map"
+    "main.447741d3.js.map": "/starig-deck/static/js/main.447741d3.js.map"
   },
   "entrypoints": [
     "static/css/main.fa95dbb9.css",
-    "static/js/main.cb173c40.js"
+    "static/js/main.447741d3.js"
   ]
 }
