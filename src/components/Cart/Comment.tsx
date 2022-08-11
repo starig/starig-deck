@@ -32,7 +32,7 @@ const Comment: FC<IComment> = ({
     return (
         <Toast className={'mb-3'} onClose={removeComment}>
             <Toast.Header>
-                <strong className="me-auto">{author}</strong>
+                <strong className="me-auto">Comment by @{author}</strong>
             </Toast.Header>
             <Toast.Body>
                 <InputGroup className="mb-3 mt-3 font-monospace" size="sm">

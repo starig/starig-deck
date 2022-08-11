@@ -10,6 +10,7 @@ import DoneCarts from "./DoneCarts";
 
 const Desk: FC = () => {
     const {types} = useSelector(selectTypes);
+    console.log(types)
 
     return (
         <Container>
@@ -17,22 +18,20 @@ const Desk: FC = () => {
                 {
                     types.map((type: string, id: number) => <Col key={id}>
                         <Type type={type} id={id}/>
+                        {
+                            id === 0 && <TodoCarts />
+                        }
+                        {
+                            id === 1 && <InProgressCarts />
+                        }
+                        {
+                            id === 2 && <TestingCarts />
+                        }
+                        {
+                            id === 3 && <DoneCarts />
+                        }
                     </Col>)
                 }
-            </Row>
-            <Row>
-                <Col>
-                    <TodoCarts />
-                </Col>
-                <Col>
-                    <InProgressCarts />
-                </Col>
-                <Col>
-                    <TestingCarts />
-                </Col>
-                <Col>
-                    <DoneCarts />
-                </Col>
             </Row>
         </Container>
     )
