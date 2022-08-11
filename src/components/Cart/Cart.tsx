@@ -38,6 +38,7 @@ const Cart: FC<ICart> = ({
     const postComment = (message) => {
         dispatch(addComment({comment: message, author: currentUser.name, cartId: id}));
         setCommentMessage('');
+
     }
 
     const removeCart = () => {
@@ -117,13 +118,13 @@ const Cart: FC<ICart> = ({
                             </Button>
                         </InputGroup>
                         <h5>
-                             {comments.length > 0 && 'Comments (' + comments.length + ')'}
+                            {comments.length > 0 && 'Comments (' + comments.length + ')'}
                         </h5>
                         {
                             comments.map((item, id) => <Comment key={id}
                                                                 comment={item.comment}
                                                                 cartId={item.cartId}
-                                                                author={item.author} />)
+                                                                author={item.author}/>)
                         }
                     </Container>
                 </Modal.Body>

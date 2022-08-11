@@ -19,8 +19,13 @@ export const typesSlice = createSlice({
     initialState,
     reducers: {
         changeTypeName: (state, action: PayloadAction<string>) => {
-            state.types[state.selectedType] = action.payload;
-            localStorage.setItem('types', JSON.stringify(state.types));
+            if (action.payload !== '') {
+                state.types[state.selectedType] = action.payload;
+                localStorage.setItem('types', JSON.stringify(state.types));
+            } else {
+                alert('ERROR: empty type name');
+            }
+
         },
         selectType: (state, action: PayloadAction<number>) => {
             state.selectedType = action.payload

@@ -16,8 +16,12 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         changeUserName: (state, action: PayloadAction<string>) => {
-            state.name = action.payload;
-            localStorage.setItem('userName', action.payload);
+            if (action.payload !== '') {
+                state.name = action.payload;
+                localStorage.setItem('userName', action.payload);
+            } else {
+                alert('ERROR: empty username')
+            }
         }
     }
 });
