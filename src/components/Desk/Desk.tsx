@@ -10,7 +10,6 @@ import DoneCarts from "./DoneCarts";
 
 const Desk: FC = () => {
     const {types} = useSelector(selectTypes);
-    console.log(types)
 
     return (
         <Container>
